@@ -36,7 +36,7 @@ Deep Learning 모델의 Input Data 취득을 위해 **WebCam**이 필요합니�
 
 * ### Tutorial Indy Hardware (Setting & Demo)
 
-  * [Reference Link](https://github.com/chaochao77/ROS_neuromeka_tutorial/blob/main/md_fIles/Tutorial%20-%20Manipulator%20INDY-10.md)
+  * [Reference Link](https://github.com/Yjinsu/Digital_Twin_and_Automation/blob/main/Project%232/md_files/Tutorial%20-%20Manipulator%20INDY-10.md)
 
 
 
