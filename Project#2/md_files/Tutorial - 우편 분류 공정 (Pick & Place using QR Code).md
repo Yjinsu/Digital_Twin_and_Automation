@@ -53,12 +53,58 @@
 
 2) **Install Anaconda**
 
-A
+    - "Anaconda" 란, 파이썬 가상 환경을 통해 라이브러리들을 쉽게 설치하고 관리할 수 있게 하는 도구입니다.
+    - 파이썬은 기본적으로 패키지 관리 시스템 **pip** 만을 포함하며, 필요에 따라 추가적으로 툴/패키지를 수동으로 추가해야 합니다.
+    - 패키지를 다운로드하는 과정이 반복될 경우, 프로젝트 수행에 필요 없는 패키지가 사전에 설치된 경우 필요 이상으로 공간을 차지하곤 합니다.
+    - 이때 Anaconda 가상환경을 활용하면, 필요가 없어진 가상환경을 삭제하는 것 만으로 설치한 모든 패키지를 제거할 수 있습니다.
+    - 다음의 주소를 통해 Anaconda를 설치할 수 있습니다. [Install Link](https://www.anaconda.com/products/distribution#Downloads)
+    - Conda 가상 환경 사용 방법은 다음과 같습니다.
 
+      * Open Anaconda Prompt(admin mode)
+       <p align="center">
+      <img src="https://user-images.githubusercontent.com/84503980/173847474-65566d79-b8ef-43ae-9b86-0e1c44687694.png" width="80%" height="80%" alt="text" width="number" />
+      </p>
+
+      * Update conda
+
+       ```python
+            conda update -n base -c default conda
+       ```
+
+      * Create Virtual Environment for Python (In this project, We used Python 3.9)
+
+       ```python
+            conda create -n py39 python = 3.9
+       ```
 3) **Install Python module**
-    - !apt install libzbar0
-    - !pip install pyzbar
-    - pip install numpy
+
+    - QR 코드를 인식하는 딥러닝 모델을 사용하기 위해서는 아래의 파이썬 모듈 설치가 요구됩니다.
+
+      * libzbar0
+      * pyzbar
+      * numpy
+    
+    - Anaconda 가상 환경에 파이썬 모듈을 설치하는 방법은 다음과 같습니다
+    
+      * Activate Virtual Environment
+       
+       ```python
+            conda activate py39
+       ```
+
+      * Install pip module
+       
+       ```python
+            # Approach 1
+            !apt install libzbar0
+            !pip install pyzbar
+            pip install numpy
+            
+            # Approach 2
+            conda install libzbar0
+            conda install pyzbar
+            conda install numpy
+       ```
 
 <br/><br/><br/>
 
