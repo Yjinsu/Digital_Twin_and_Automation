@@ -19,7 +19,6 @@
 로봇뿐만 아니라, 사용한 **그리퍼 EGP-64** 에 대한 연결 및 사용법 또한 Repository에 포함되어 있습니다.
 
 **이 프로젝트는 한동대학교 김영근 교수님의 지도아래 진행되었습니다.**
-![자동차번호판](https://user-images.githubusercontent.com/84503980/173832385-296e9255-9d06-4f46-ab84-8328ceae9f9a.png)
 
 
 
@@ -31,7 +30,7 @@
 
 Deep Learning 모델의 Input Data 취득을 위해 **WebCam**이 필요합니다. 본 프로젝트에서는 QR 코드를 읽기 위해 노트북 외장 웹캠을 사용했습니다.
 
-​    
+    
 
 ## Contents
 
