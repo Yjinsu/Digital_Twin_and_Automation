@@ -1,12 +1,14 @@
-## Main Contents: Pick and Place using QR code
+# Main Contents: Pick and Place using QR code
 
-이 프로젝트에서 구성한 우편 분류 공정에 대한 ROS 코드는 아래의 순서에 따라 작동하게 됩니다.
+프로젝트 수행을 위해 구축한 우편 분류 공정에 대한 **Python IndyDCP** 코드는 아래의 순서에 따라 작동하게 됩니다.
 
-![image](https://user-images.githubusercontent.com/84503980/173833947-62c3d286-cb0f-4d5e-9e0e-6d73da0a5944.png)
-
+<p align="center">
+      <img src="https://user-images.githubusercontent.com/84503980/173833947-62c3d286-cb0f-4d5e-9e0e-6d73da0a5944.png" width="50%" height="50%" alt="text" width="number" />
+      </p>
+      
 <br/><br/><br/>
 
-### 1. External Envirionment Setting
+## 1. External Envirionment Setting
 
 <br/>
 
@@ -41,16 +43,26 @@
 
 <br/><br/><br/>
 
-### 2. Internal Environment Setting
+## 2. Internal Environment Setting
 
-1) Install Anaconda
+1) **Install Visual Studio Code**
 
-2) Install Python module
+   - **Visual Studio Code** 란, 윈도우(Windows), 맥(Mac OS), 리눅스(Linux) 운영체제 모두에서 사용 가능한 소스 코드 편집기입니다.
+   - 원활한 코드 수정/실행을 위해, VScode를 설치합니다.
+   - 다음의 주소를 통해 VScode를 설치할 수 있습니다. [Install Link](https://code.visualstudio.com/Download)
+
+2) **Install Anaconda**
+
+A
+
+3) **Install Python module**
     - !apt install libzbar0
     - !pip install pyzbar
     - pip install numpy
 
-### 3. Coding
+<br/><br/><br/>
+
+## 3. Coding
 
 1. qr_code_reader.py [Sub File]
 
