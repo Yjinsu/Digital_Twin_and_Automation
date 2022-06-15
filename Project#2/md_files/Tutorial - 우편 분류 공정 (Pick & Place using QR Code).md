@@ -1,0 +1,431 @@
+## Main Contents: Pick and Place using QR code
+
+이 프로젝트에서 구성한 우편 분류 공정에 대한 ROS 코드는 아래의 순서에 따라 작동하게 됩니다.
+
+![image](https://user-images.githubusercontent.com/84503980/173833947-62c3d286-cb0f-4d5e-9e0e-6d73da0a5944.png)
+
+
+### 1. External Envirionment Setting
+
+1. QR 코드 생성
+   우편을 분류하기 위해, 먼저 QR 코드를 생성하는 과정이 필요합니다.
+   QR 코드 생성에는, Python Module "qrcode" 를 활용했습니다.
+   
+   <img src="https://user-images.githubusercontent.com/84503980/173837441-2640bf07-6d1a-4ec9-96ed-9da41ddb0509.png" width="100%" height="100%" align = 'center'/>
+   
+   위와 같은 방법을 통해 QR코드 이미지를 만들고, 이를 인쇄한 뒤 편지 봉투에 붙였습니다.
+
+
+
+2. 좌표 고정
+    편지 봉투를 쌓아 둘 곳과, 분류할 곳의 좌표를 설정해야 합니다.
+    **INDY-10 전용 태블릿**을 활용, '직접 교시' 모드를 통해 좌표를 취득하였습니다.
+    그 과정은 다음과 같습니다
+    
+    - INDY-10 전용 태블릿에서, 초보자 모드에서 직접교시 모드로 바꿔줍니다.
+
+
+
+    
+    <img src="https://user-images.githubusercontent.com/84503980/173838034-fa1d1820-6ee1-4cf3-b772-a164d9136ada.png" width="50%" height="50%" align = 'center'/>
+
+    - 로봇을 원하는 위치로 움직여 좌표를 땁니다.		
+ 	
+    <img src="https://user-images.githubusercontent.com/84503980/173838362-0cee0a60-e234-4209-8747-9bda393254cf.png" width="50%" height="50%" align = 'center'/>
+    
+    여기서 취득한 좌표를 사용하는 부분에 대해서는, 추후 **3. Coding** 부분에서 다시 언급하겠습니다.
+
+### 2. Internal Environment Setting
+
+1) Install Anaconda
+
+2) Install Python module
+    - !apt install libzbar0
+    - !pip install pyzbar
+    - pip install numpy
+
+### 3. Coding
+
+1. qr_code_reader.py [Sub File]
+
+   카메라를 통해 우편의 QR 코드를 인식 후 데이터를 해독하여 Main File인 qr_classify_robot.py로 보낸다.
+
+   코드 구성은 다음과 같다.
+
+   1. 해당 파일에 필요한 라이브러리를 불러온다.
+
+   ```python
+   import pyzbar.pyzbar as pyzbar
+   import cv2
+   ```
+
+   2. 카메라에서 영상을 가져온다. (Window)
+
+   ```python
+   cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # Window
+   #cap = cv2.VideoCapture(0)                # Linux
+   ```
+
+   3. location을 선언해주며, 초기값은 '0'으로 설정한다.
+
+   ```python
+   location = str(0)   # Declare location
+   ```
+
+   4. while() 함수를 통해 카메라가 작동하는 동안 반복문이 실행되도록 하며, 카메라가 매 프레임을 읽도록 한다.
+
+   ```python
+   while(cap.isOpened()):
+     ret, img = cap.read()	# Read image(frame) 
+   
+     if not ret:
+       continue
+   ```
+
+   5. 읽어온 이미지를 gray scale로 변환시킨 뒤에 이미지 안에서 QR 코드를 찾아 해독한다.
+
+   ```python
+     # Convert image to gray scale
+     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+     
+     # Decode QR code in image
+     decoded = pyzbar.decode(gray)
+   ```
+
+   6. 검출한 QR 코드의 영역 및 타입을 추출하고, QR 코드의 데이터를 문자열로 해독한다. 또한, 해독한 데이터를 location에 저장한다.
+
+   ```python
+     for d in decoded:
+       # Extract the area of the QR code.
+       x, y, w, h = d.rect
+   
+       # Read decoded data & type
+       barcode_data = d.data.decode("utf-8")
+       barcode_type = d.type
+       # Store decoded QR data to location
+       location = barcode_data
+   ```
+
+   7. 이미지 내 QR 코드 영역에 사각형 테두리를 그린 뒤, text에 QR 코드의 타입 및 데이터를 저장하여 이미지에 포함시킨다.
+
+   ```python
+   	# Draw rectangular at the area of the QR code  
+       cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 2)
+   
+       # Store QR data & type in the text, and put in image
+       text = '%s (%s)' % (barcode_data, barcode_type)
+       cv2.putText(img, text, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2, cv2.LINE_AA)
+   ```
+
+   8. 카메라로 읽고 있는 이미지를 'img' 윈도우로 보여준다.
+
+   ```python
+     # Show image in 'img' window
+     cv2.imshow('img', img)
+   ```
+
+   9. location에 QR data가 저장되면 반복문에서 나간다.
+
+   ```python
+     # Exit the while loop when QR data is store in the location
+     if location != str(0):
+         break
+   ```
+
+   10. 'q'를 누르면 location에 종료 구문이 저장된 채로 반복문에서 나간다.
+
+   ```python
+     # When 'q' is pressed, the ending phrase is stored in the location and leaves the loop.
+     key = cv2.waitKey(1)
+     if key == ord('q'):
+       location = 'quit'
+       break
+   ```
+
+   11. location에 저장된 QR data를 출력해준 뒤, 설정해놓은 카메라와 윈도우를 해제한다.
+
+   ```python
+   # Print the location (Allows the location to be read from qr_classify_robot.py)
+   print(location)
+   
+   # Turn off the set camera and window
+   cap.release()
+   cv2.destroyAllWindows()
+   ```
+
+   
+
+2. qr_classify_robot.py [Main File]
+
+   Sub File인 qr_code_reader.py에서 받은 우편의 QR 데이터를 바탕으로 로봇을 작동시켜 해당되는 지점으로 우편을 옮긴다.
+
+   코드 구성은 다음과 같다.
+
+   1. 해당 파일에 필요한 라이브러리를 불러온다. 
+
+   ```python
+   from indy_utils import indydcp_client as client
+   from indy_utils.indy_program_maker import JsonProgramComponent
+   
+   import json
+   import threading
+   from time import sleep
+   import numpy as np
+   
+   import pyzbar.pyzbar as pyzbar
+   import cv2
+   
+   import subprocess
+   import sys
+   ```
+
+   2. 로봇의 IP와 name을 입력해 주며, 해당 데이터를 통해 indy라는 클라스를 만들어준다.
+
+   ```python
+   robot_ip = "192.168.0.6"  	# Robot IP
+   robot_name = "NRMK-Indy10"  # Robot name
+   
+   indy = client.IndyDCPClient(robot_ip, robot_name)	# Robot Class
+   ```
+
+   3. 주어진 IP  환경에서 해당 로봇에 연결시킨다.
+
+   ```python
+   indy.connect()	# Robot Connect 
+   ```
+
+   4. 로봇의 환경을 설정해준 뒤에 출력해서 확인해본다.
+
+   ```python
+   # Robot Setting
+   indy.set_collision_level(5)
+   indy.set_joint_vel_level(3)
+   indy.set_task_vel_level(3)
+   indy.set_joint_blend_radius(20)
+   indy.set_task_blend_radius(0.2)
+   
+   # Check Robot Setting
+   print(indy.get_collision_level())
+   print(indy.get_joint_vel_level())
+   print(indy.get_task_vel_level())
+   print(indy.get_joint_blend_radius())
+   print(indy.get_task_blend_radius())
+   ```
+
+   5. 로봇의 관절 공간에서의 각도(j_pos), 작업 공간에서의 위치 및 방향(t_pos)을 선언한 뒤에 출력해서 확인해본다.
+
+   ```python
+   # Angle in joint space(j_pos), Location and orientation in the workspace(t_pos)
+   j_pos = indy.get_joint_pos()
+   t_pos = indy.get_task_pos()
+   
+   # Check j_pos & t_pos
+   print(j_pos)
+   print(t_pos)
+   ```
+
+   6. 로봇의 상태를 key에 저장한 뒤에 출력해서 확인해본다.
+
+   ```python
+   # Store the status of the robot in the key.
+   key = []
+   status = indy.get_robot_status()
+   for value in status.keys():
+       key.append(value)
+   
+   # Check key & type of status
+   print(key)
+   print(type(status))
+   ```
+
+   7. 로봇을 home 위치로 보내 대기 상태로 만든다.
+
+   ```python
+   # Home Position
+   indy.go_home()
+   ```
+
+   8. 로봇을 동작한 경우에는 Safety Function을 넣어주어 로봇이 동작하는 중에는 추가 입력을 받지 않게 만들며, 동작이 끝난 뒤에는 종료 구문을 출력한다.
+
+   ```python
+   # Store the status of the robot in the key.
+   key = []
+   status = indy.get_robot_status()
+   for value in status.keys():
+       key.append(value)
+   
+   # Check key & type of status
+   print(key)
+   print(type(status))
+   ```
+
+   9. 로봇 작동 플래그로 power_on을 선언해주며, 초기값은 1로 설정한다.
+
+   ```python
+   # Robot Operation Flag
+   power_on = 1   # Robot operation needed: 1, Robot operation not needed: 0
+   ```
+
+   10. while() 함수를 통해 무한 루프를 만든 뒤, qr_code_reader.py 파일에서 읽은 QR 코드 데이터를 읽어와서 문자열로 해독한다. 그리고 필요한 부분만 location에 최종적으로 저장한 다음에 출력하여 확인해본다.
+
+   ```python
+   while(1):
+       # Read QR code from 'qr_code_reader.py'
+       out = subprocess.check_output(['python', 'qr_code_reader.py'] )
+       location = out.decode('utf-8')          # Decode QR code and store data in location
+       location = location[:len(location)-2]   # Store data excluding the last two in the location.
+     
+       # Check location
+       print('Data : ', location, '\n')
+   ```
+
+   11. location에 저장된 데이터에 해당되는 좌표1(위), 좌표2(아래)를 반환해준다. 만약 location에 quit이라는 데이터가 저장되어 있다면, power_on 플래그를 1에서 0으로 변환시킨다.
+
+   ```python
+       # Returns the coordinates of the corresponding location (six location)
+       if location == "Creation hall":
+           locate_pos1 = [0.62684, -0.12983, 0.49828, 179.94, 30.95, 168.18]    # UP
+           locate_pos2 = [0.62684, -0.12983, 0.49828, 179.94, 30.95, 168.18]    # Down
+       elif location == "Newton hall":
+           locate_pos1 = [0.70086, -0.03577, 0.47819, 179.92, 34.69, 176.94]    # UP
+           locate_pos2 = [0.62684, -0.12983, 0.49828, 179.94, 30.95, 168.18]    # Down
+       elif location == "Rodem hall":
+           locate_pos1 = [0.74293, 0.07607, 0.43419, -0.09, 148.13, 5.71]       # UP
+           locate_pos2 = [0.62684, -0.12983, 0.49828, 179.94, 30.95, 168.18]    # Down
+       elif location == "Grace hall":
+           locate_pos1 = [0.70086, -0.03577, 0.47819, 179.92, 34.69, 176.94]    # UP
+           locate_pos2 = [0.70086, -0.03577, 0.47819, 179.92, 34.69, 176.94]    # Down
+       elif location == "Oseok hall":
+           locate_pos1 = [0.74293, 0.07607, 0.43419, -0.09, 148.13, 5.71]       # UP
+           locate_pos2 = [0.74293, 0.07607, 0.43419, -0.09, 148.13, 5.71]       # Down
+       elif location == "Hyundong hall":
+           locate_pos1 = [0.74293, 0.07607, 0.43419, -0.09, 148.13, 5.71]       # UP
+           locate_pos2 = [0.74293, 0.07607, 0.43419, -0.09, 148.13, 5.71]       # Down
+       elif location == 'quit':
+           power_on = 0                                                         # Robot Operation Flag(0)
+   ```
+
+   12. location 데이터에 따른 좌표가 할당되고, power_on 플래그가 1인 상태라면, 우편 분류 공정이 실행된다.
+
+       우편 분류 공정의 순서는 다음과 같다.
+
+       - 1단계: 우편이 놓여진 고정된 좌표로 간다.
+       - 2단계: z축 방향으로 내려가서 우편을 집을 준비를 마친다.
+       - 3단계: Vaccum head를 통해 우편을 집는다.
+       - 4단계: 우편을 집은 뒤에 home 위치로 간다.
+       - 5단계: location에 해당되는 위치로 간다.
+       - 6단계: z축 방향으로 내려가서 우편을 놓을 준비를 마친다.
+       - 7단계: Vaccum head를 통해 우편을 놓는다.
+       - 8단계: home 위치로 돌아가서 대기한다.
+
+   ```python
+   if power_on == 1:
+           # Step 1: Go to the stationary location where the mail is placed
+           t_pos = [0.43406, -0.44675, 0.48322, -176.72, 35.65, 137.13]         # Stationary location(Up)
+           indy.task_move_to(t_pos) # move to 절대좌표, move by 상대좌표
+   
+           while True:
+               status = indy.get_robot_status()
+               sleep(0.2)
+               if status[key[5]]==1 :
+                   break
+           print('done : move1 process')
+           
+           # Step 2: Go down the z-axis and get ready to pick up the mail
+           t_pos = [0.43406, -0.44675, 0.48322, -176.72, 35.65, 137.13]         # Stationary location(Down)
+           indy.task_move_to(t_pos)
+   
+           while True:
+               status = indy.get_robot_status()
+               sleep(0.2)
+               if status[key[5]]==1 :
+                   break
+           print('done : move2 process')
+   
+           # Step 3: Pick up mail through Vaccum head
+           indy.set_do(8, 0)
+           indy.set_do(9, 1)       
+                  
+           while True:
+               status = indy.get_robot_status()
+               sleep(0.2)
+               if status[key[5]]==1 :
+                   break
+           print('done : move3 process')
+           
+           # Step 4: Pick up the mail and go to the home location
+           indy.go_home()      
+           
+           while True:
+               status = indy.get_robot_status()
+               sleep(0.2)
+               if status[key[5]]==1 :
+                   break
+           print('done : move4(go home) process')
+   
+           # Step 5: Go to the location corresponding to the location
+           t_pos = locate_pos1
+           indy.task_move_to(t_pos)
+   
+           while True:
+               status = indy.get_robot_status()
+               sleep(0.2)
+               if status[key[5]]==1 :
+                   break
+           print('done : move5 process')        
+   
+           # Step 6: Go down the z-axis and get ready to put the mail
+           t_pos = locate_pos2
+           indy.task_move_to(t_pos)
+   
+           while True:
+               status = indy.get_robot_status()
+               sleep(0.2)
+               if status[key[5]]==1 :
+                   break
+           print('done : move6 process')
+   
+           # Step 7: Mail is placed through Vaccum head
+           indy.set_do(9, 0)
+           indy.set_do(8, 1)
+           
+           while True:
+               status = indy.get_robot_status()
+               sleep(0.2)
+               if status[key[5]]==1 :
+                   break
+           print('done : move7 process')
+               
+           # Step 8: Return to the home position and stand by
+           indy.go_home()
+   
+           while True:
+               status = indy.get_robot_status()
+               sleep(0.2)
+               if status[key[5]]==1 :
+                   break
+           print('done : move8(go home) process')
+   ```
+
+   13. location에 quit이라는 데이터가 저장되어 power_on 플래그가 1에서 0으로 바뀐 경우에는 추가적인 로봇 작동이 없는 거라 판단하여 로봇을 zero 위치로 복귀시킨 뒤 프로그램을 종료한다.
+
+   ```python
+       if power_on == 0:
+           # Zero position
+           indy.go_zero()
+   
+           while True:
+               status = indy.get_robot_status()
+               sleep(0.2)
+               if status[key[5]]==1 :
+                   break
+           print('done : zero process')
+   
+           # Disconnect the robot
+           indy.disconnect()
+   
+           # Exit the program
+           sys.exit()
+   ```
+
+   
