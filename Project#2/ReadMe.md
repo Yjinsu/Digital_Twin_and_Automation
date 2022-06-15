@@ -42,4 +42,4 @@ Deep Learning 모델의 Input Data 취득을 위해 **WebCam**이 필요합니�
 
 * ### Tutorial Indy Sorting (Demo)
 
-  * [Reference Link]()
+  * [Reference Link](https://github.com/Yjinsu/Digital_Twin_and_Automation/blob/main/Project%232/md_files/Tutorial%20-%20%EC%9A%B0%ED%8E%B8%20%EB%B6%84%EB%A5%98%20%EA%B3%B5%EC%A0%95%20(Pick%20%26%20Place%20using%20QR%20Code).md)
