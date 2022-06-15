@@ -4,8 +4,11 @@
 
 ![image](https://user-images.githubusercontent.com/84503980/173833947-62c3d286-cb0f-4d5e-9e0e-6d73da0a5944.png)
 
+<br/><br/><br/>
 
 ### 1. External Envirionment Setting
+
+<br/>
 
 1. QR 코드 생성
    우편을 분류하기 위해, 먼저 QR 코드를 생성하는 과정이 필요합니다.
@@ -15,7 +18,7 @@
    
    위와 같은 방법을 통해 QR코드 이미지를 만들고, 이를 인쇄한 뒤 편지 봉투에 붙였습니다.
 
-
+<br/>
 
 2. 좌표 고정
     편지 봉투를 쌓아 둘 곳과, 분류할 곳의 좌표를 설정해야 합니다.
@@ -24,16 +27,19 @@
     
     - INDY-10 전용 태블릿에서, 초보자 모드에서 직접교시 모드로 바꿔줍니다.
 
-
-
+      <p align="center">
+      <img src="https://user-images.githubusercontent.com/84503980/173838034-fa1d1820-6ee1-4cf3-b772-a164d9136ada.png" width="50%" height="50%" alt="text" width="number" />
+      </p>
     
-    <img src="https://user-images.githubusercontent.com/84503980/173838034-fa1d1820-6ee1-4cf3-b772-a164d9136ada.png" width="50%" height="50%" align = 'center'/>
+    - 로봇을 원하는 위치로 움직여 좌표를 땁니다.	
 
-    - 로봇을 원하는 위치로 움직여 좌표를 땁니다.		
- 	
-    <img src="https://user-images.githubusercontent.com/84503980/173838362-0cee0a60-e234-4209-8747-9bda393254cf.png" width="50%" height="50%" align = 'center'/>
-    
+      <p align="center">
+      <img src="https://user-images.githubusercontent.com/84503980/173838362-0cee0a60-e234-4209-8747-9bda393254cf.png" width="50%" height="50%" alt="text" width="number" />
+      </p>
+      
     여기서 취득한 좌표를 사용하는 부분에 대해서는, 추후 **3. Coding** 부분에서 다시 언급하겠습니다.
+
+<br/><br/><br/>
 
 ### 2. Internal Environment Setting
 
