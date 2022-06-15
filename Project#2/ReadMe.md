@@ -30,7 +30,7 @@
 
 Deep Learning 모델의 Input Data 취득을 위해 **WebCam**이 필요합니다. 본 프로젝트에서는 QR 코드를 읽기 위해 노트북 외장 웹캠을 사용했습니다.
 
-    
+<br/>
 
 ## Contents
 
