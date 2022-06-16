@@ -83,6 +83,7 @@
             conda create -n py39 python = 3.9
        ```
        <br/><br/>
+       
 3) **Install Python module**
 
     - QR 코드를 인식하는 딥러닝 모델을 사용하기 위해서는 아래의 파이썬 모듈 설치가 요구됩니다.
@@ -117,7 +118,7 @@
 4) **Download IndyDCP Package & Demo Code**
 
     - 매니퓰레이터 모델 **INDY-10 (Neuromeka)** 을 구동시키기 위한 패키지와, Demo 수행을 위한 코드를 다운로드합니다.
-    - [Download Link]()
+    - [Download Link](https://github.com/Yjinsu/Digital_Twin_and_Automation/tree/main/Project%232/source)
     - 사용된 코드 알고리즘에 대한 설명은 아래의 링크를 통해 확인할 수 있습니다.
     - [Algorithm of Main Code](https://github.com/Yjinsu/Digital_Twin_and_Automation/blob/main/Project%232/md_files/Code%20Description.md)
  
