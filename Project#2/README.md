@@ -14,7 +14,7 @@
 **Project 공정은 QR 코드를 활용한 우편 분류 공정**입니다
 매니퓰레이터 모델은 **INDY-10 (Neuromeka)**로, **IndyDCP (인디 전용통신; Indy Dedicated Communication Protocol)** 을 사용해 공정을 구현하였습니다.
 
-**IndyDCP**는 Neuromeka의 Indy 로봇을 제어하기 위한 전용 통신 프로토콜로서, 로봇의 기본적인 설정, 제어, 데이터 수신 등을 지원합니다.  Python, C++, MATLAB, Labview 클라이언트를 지원하는데, 본 프로젝트에서는 딥러닝을 활용하기 위해 [**Python IndyDCP 클라이언트 **](http://docs.neuromeka.com/2.3.0/kr/Python/section1/)를 사용했습니다.
+**IndyDCP**는 Neuromeka의 Indy 로봇을 제어하기 위한 전용 통신 프로토콜로서, 로봇의 기본적인 설정, 제어, 데이터 수신 등을 지원합니다.  Python, C++, MATLAB, Labview 클라이언트를 지원하는데, 본 프로젝트에서는 딥러닝을 활용하기 위해 [Python IndyDCP 클라이언트](http://docs.neuromeka.com/2.3.0/kr/Python/section1/)를 사용했습니다.
 
 로봇뿐만 아니라, 사용한 **그리퍼 EGP-64** 에 대한 연결 및 사용법 또한 Repository에 포함되어 있습니다.
 
