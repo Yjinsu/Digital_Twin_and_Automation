@@ -9,9 +9,7 @@ Project#2 - 우편 분류 공정(Using QR Code)에 사용한 Main Code Algorithm
 
 <br/><br/>
 
-## 1. qr_code_reader.py [Sub File]
-
-   카메라를 통해 우편의 QR 코드를 인식 후 데이터를 해독하여 Main File인 qr_classify_robot.py로 보낸다.
+## 1. 카메라를 통해 우편의 QR 코드를 인식 후 데이터를 해독하여 Main File인 qr_classify_robot.py로 보낸다.
 
    코드 구성은 다음과 같다.
 
@@ -116,7 +114,7 @@ Project#2 - 우편 분류 공정(Using QR Code)에 사용한 Main Code Algorithm
    cv2.destroyAllWindows()
    ```
 
-<br/>   
+   
 
 ## 2. qr_classify_robot.py [Main File]
 
@@ -247,25 +245,25 @@ Project#2 - 우편 분류 공정(Using QR Code)에 사용한 Main Code Algorithm
    ```python
        # Returns the coordinates of the corresponding location (six location)
        if location == "Creation hall":
-           locate_pos1 = [0.62684, -0.12983, 0.49828, 179.94, 30.95, 168.18]    # UP
-           locate_pos2 = [0.62684, -0.12983, 0.49828, 179.94, 30.95, 168.18]    # Down
+           locate_pos1 = [ 0.37860,  -0.53128,  0.70879,   169.93,   7.69,   71.93]    # UP
+           locate_pos2 = [ 0.39087,  -0.54838,  0.63746,   175.45,   3.60,   72.48]    # Down
        elif location == "Newton hall":
-           locate_pos1 = [0.70086, -0.03577, 0.47819, 179.92, 34.69, 176.94]    # UP
-           locate_pos2 = [0.62684, -0.12983, 0.49828, 179.94, 30.95, 168.18]    # Down
+           locate_pos1 = [ 0.25786,  -0.51737,  0.71442,   170.46,  13.09,   72.51]    # UP
+           locate_pos2 = [ 0.26991,  -0.54060,  0.64523,   175.37,   8.12,   73.43]    # Down
        elif location == "Rodem hall":
-           locate_pos1 = [0.74293, 0.07607, 0.43419, -0.09, 148.13, 5.71]       # UP
-           locate_pos2 = [0.62684, -0.12983, 0.49828, 179.94, 30.95, 168.18]    # Down
+           locate_pos1 = [ 0.16076,  -0.49830,  0.73360,   170.77,  23.20,   71.19]    # UP
+           locate_pos2 = [ 0.17026,  -0.52394,  0.64216,   178.11,  14.25,   73.32]    # Down
        elif location == "Grace hall":
-           locate_pos1 = [0.70086, -0.03577, 0.47819, 179.92, 34.69, 176.94]    # UP
-           locate_pos2 = [0.70086, -0.03577, 0.47819, 179.92, 34.69, 176.94]    # Down
+           locate_pos1 = [ 0.05757,  -0.54360,  0.72850,  -178.98,  14.83,   71.69]    # UP
+           locate_pos2 = [ 0.06028,  -0.56183,  0.64116,  -176.20,   9.61,   72.75]    # Down
        elif location == "Oseok hall":
-           locate_pos1 = [0.74293, 0.07607, 0.43419, -0.09, 148.13, 5.71]       # UP
-           locate_pos2 = [0.74293, 0.07607, 0.43419, -0.09, 148.13, 5.71]       # Down
+           locate_pos1 = [-0.05459,  -0.57265,  0.71999,  -172.90,  10.95,   73.03]    # UP
+           locate_pos2 = [-0.05496,  -0.59075,  0.63478,  -170.88,   3.16,   73.49]    # Down
        elif location == "Hyundong hall":
-           locate_pos1 = [0.74293, 0.07607, 0.43419, -0.09, 148.13, 5.71]       # UP
-           locate_pos2 = [0.74293, 0.07607, 0.43419, -0.09, 148.13, 5.71]       # Down
+           locate_pos1 = [-0.15900,  -0.57540,  0.73355,  -170.59,  12.66,   72.96]    # UP
+           locate_pos2 = [-0.17164,  -0.59050,  0.63448,  -169.83,   5.84,   72.95]    # Down
        elif location == 'quit':
-           power_on = 0                                                         # Robot Operation Flag(0)
+           power_on = 0	# Robot Operation Flag(0)
    ```
 
    12. location 데이터에 따른 좌표가 할당되고, power_on 플래그가 1인 상태라면, 우편 분류 공정이 실행된다.
@@ -276,16 +274,17 @@ Project#2 - 우편 분류 공정(Using QR Code)에 사용한 Main Code Algorithm
        - 2단계: z축 방향으로 내려가서 우편을 집을 준비를 마친다.
        - 3단계: Vaccum head를 통해 우편을 집는다.
        - 4단계: 우편을 집은 뒤에 home 위치로 간다.
-       - 5단계: location에 해당되는 위치로 간다.
+       - 5단계: 우편 분류함 중 location에 해당되는 위치로 간다.
        - 6단계: z축 방향으로 내려가서 우편을 놓을 준비를 마친다.
        - 7단계: Vaccum head를 통해 우편을 놓는다.
-       - 8단계: home 위치로 돌아가서 대기한다.
+       - 8단계: Vaccum head를 우편 분류함 위로 올린다. 
+       - 9단계: home 위치로 돌아가서 대기한다.
 
    ```python
    if power_on == 1:
            # Step 1: Go to the stationary location where the mail is placed
-           t_pos = [0.43406, -0.44675, 0.48322, -176.72, 35.65, 137.13]         # Stationary location(Up)
-           indy.task_move_to(t_pos) # move to 절대좌표, move by 상대좌표
+           t_pos = [0.51681, -0.14784, 0.50296, 179.93, 16.92, 163.91]		# Stationary location(Up)
+           indy.task_move_to(t_pos) # move to -> Absolute coordinates, move by -> Relative coordinates
    
            while True:
                status = indy.get_robot_status()
@@ -295,7 +294,7 @@ Project#2 - 우편 분류 공정(Using QR Code)에 사용한 Main Code Algorithm
            print('done : move1 process')
            
            # Step 2: Go down the z-axis and get ready to pick up the mail
-           t_pos = [0.43406, -0.44675, 0.48322, -176.72, 35.65, 137.13]         # Stationary location(Down)
+           t_pos = [0.55074, -0.15743, 0.39992, 179.95, 6.32, 163.92]		# Stationary location(Down)
            indy.task_move_to(t_pos)
    
            while True:
@@ -358,8 +357,19 @@ Project#2 - 우편 분류 공정(Using QR Code)에 사용한 Main Code Algorithm
                if status[key[5]]==1 :
                    break
            print('done : move7 process')
-               
-           # Step 8: Return to the home position and stand by
+           
+           # Step 8: Post the mail and raise the Vaccum head.
+           t_pos = locate_pos1
+           indy.task_move_to(t_pos)
+   
+           while True:
+               status = indy.get_robot_status()
+               sleep(0.2)
+               if status[key[5]]==1 :
+                   break
+           print('done : move8 process')  
+           
+           # Step 9: Return to the home position and stand by
            indy.go_home()
    
            while True:
@@ -367,7 +377,7 @@ Project#2 - 우편 분류 공정(Using QR Code)에 사용한 Main Code Algorithm
                sleep(0.2)
                if status[key[5]]==1 :
                    break
-           print('done : move8(go home) process')
+           print('done : move9(go home) process')
    ```
 
    13. location에 quit이라는 데이터가 저장되어 power_on 플래그가 1에서 0으로 바뀐 경우에는 추가적인 로봇 작동이 없는 거라 판단하여 로봇을 zero 위치로 복귀시킨 뒤 프로그램을 종료한다.
