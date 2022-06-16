@@ -13,7 +13,7 @@
   - 2. 우측 상단에 붉은 메세지가 떠있을 경우, 우측 상단에 있는 **리셋을 눌러 초기화**하면 됩니다.
 
   <p align="center">
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/11.jpg" width="80%" height="80%" alt="text" width="number" />
+  <img src="https://user-images.githubusercontent.com/84503980/174025653-e7f15dab-b155-416a-9d0f-18fe4ac11d66.png" width="80%" height="80%" alt="text" width="number" />
   </p>
 
 <br/>
@@ -21,10 +21,8 @@
 1. 로봇의 IP를 확인하기 위해 환경설정, **애플리케이션 정보**를 들어가 **IP**를 확인합니다. (**ROS로 로봇과 연결 시 **IP를 알아야합니다.)
 
   <p align="center">
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/12.jpg" width="80%" height="80%" alt="text" width="number" />
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/blob/main/image/12.jpg" width="80%" height="80%" alt="text" width="number" />
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/13.jpg" width="80%" height="80%" alt="text" width="number" />
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/blob/main/image/13.jpg" width="80%" height="80%" alt="text" width="number" />
+  <img src="https://user-images.githubusercontent.com/84503980/174025744-6447f5e6-fb89-4aea-bc10-2f583a1f22ca.png" width="80%" height="80%" alt="text" width="number" />
+  <img src="https://user-images.githubusercontent.com/84503980/174025924-35c1c6a4-9c34-4d1b-9e6b-2c6279d56283.png" width="80%" height="80%" alt="text" width="number" />
   </p>
 
 
@@ -33,15 +31,11 @@
 3. **프로그램 > 새로만들기 > 시간기준 > 조인트이동 편집 > 직접 교시**로 들어가 직접 손으로 로봇 조인트들을 움직일 수 있습니다. 이를 통해 좌표 취득이 가능합니다.
 
   <p align="center">
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/17.jpg" width="80%" height="80%" alt="text" width="number" />
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/blob/main/image/17.jpg" width="80%" height="80%" alt="text" width="number" />
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/14.jpg" width="80%" height="80%" alt="text" width="number" />
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/blob/main/image/14.jpg" width="80%" height="80%" alt="text" width="number" />
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/15.jpg" width="80%" height="80%" alt="text" width="number" />
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/blob/main/image/15.jpg" width="80%" height="80%" alt="text" width="number" />
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/19.jpg" width="80%" height="80%" alt="text" width="number" />
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/blob/main/image/19.jpg" width="80%" height="80%" alt="text" width="number" />   <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/16.jpg" width="80%" height="80%" alt="text" width="number" />
-  <img src="https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/16.jpg" width="80%" height="80%" alt="text" width="number" /> 
+  <img src="https://user-images.githubusercontent.com/84503980/174025946-5bd469b4-8b6b-4df9-9daf-9c27333318f9.png" width="80%" height="80%" alt="text" width="number" />
+  <img src="https://user-images.githubusercontent.com/84503980/174025960-72cb5cf1-9268-4bb8-8bd8-f64d6ebf535f.png" width="80%" height="80%" alt="text" width="number" />
+  <img src="https://user-images.githubusercontent.com/84503980/174026549-a2dfce42-37e2-4542-ad43-9be98db1931c.png" width="80%" height="80%" alt="text" width="number" />
+  <img src="https://user-images.githubusercontent.com/84503980/174026695-a63a6dcd-e8cd-4cbd-a99d-28fa0a61b2a8.png" width="80%" height="80%" alt="text" width="number" />
+  <img src="https://user-images.githubusercontent.com/84503980/174026748-8da295e7-8f57-46bc-a6bd-5d8cde75dfe2.png" width="80%" height="80%" alt="text" width="number" />
   </p>
 
    또한 이동 > 홈 위치 or 영위치를 누르는 것으로 조인트 별로 이상이 없는지 간단히 체크 할 수 있습니다.
@@ -49,20 +43,6 @@
 실험 도중 로봇이 멈추거나, 오류가 생길 경우 **태블릿의 Reset 버튼**을 누르면 로봇 상태가 초기화 되며 오류가 고쳐집니다.
 
 <br/><br/>
-
-## 실제 로봇 연결
-
-1. INDY-10을 작동시키고, **컨트롤박스에 연결된 공유기와 동일한 WIFI로 컴퓨터와 연결**합니다.
-
-2. 태블릿으로 확인한 로봇의 IP로 터미널 창에서 아래의 명령어의 xxx부분에 **IP주소를 추가하여 실행**합니다.
-
-   `roslaunch indy10_moveit_config moveit_planning_execution.launch robot_ip:=xxx.xxx.xxx.xxx`
-
-3. 태블릿으로 로봇을 조작하여 움직이면 Rviz에서도 실시간으로 로봇이 움직이는 것을 확인 할 수 있습니다.
-
-4. 종료하시고 싶으시다면 명령을 실행한 터미널로 가서 `ctrl+c` 를 눌러 실행한 `roslaunch`가 종료되면서 Rviz가 꺼지고 로봇과의 연결이 끊깁니다.
-
-
 
 ## Hardware - Vaccum Gripper
 
@@ -127,7 +107,10 @@
 
 2. 컨트롤 박스 후면을 보면 아래의 이미지와 같이 Digital I/O, Analog I/O가 있습니다.
 
-![image](https://user-images.githubusercontent.com/84503980/174018890-f552edc4-0270-4ccf-9c63-de833f231b20.png)
+  <p align="center">
+  <img src="https://user-images.githubusercontent.com/84503980/174018890-f552edc4-0270-4ccf-9c63-de833f231b20.png" width="80%" height="80%" alt="text" width="number" />
+  </p>
+![image]()
 
 
    [![img](https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/112.jpg)](https://github.com/chaochao77/ROS_neuromeka_tutorial/blob/main/image/112.jpg)[![img](https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/111.jpg)](https://github.com/chaochao77/ROS_neuromeka_tutorial/blob/main/image/111.jpg)
