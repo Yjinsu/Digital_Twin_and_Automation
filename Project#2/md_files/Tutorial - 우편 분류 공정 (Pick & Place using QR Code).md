@@ -110,6 +110,7 @@
 
     - 매니퓰레이터 모델 **INDY-10 (Neuromeka)** 을 구동시키기 위한 패키지와, Demo 수행을 위한 코드를 다운로드합니다.
     - [Download Link]()
+    - 사용된 코드 알고리즘에 대한 설명은 아래의 링크를 통해 확인할 수 있습니다.
     - [Algorithm of Main Code](https://github.com/Yjinsu/Digital_Twin_and_Automation/blob/main/Project%232/md_files/Code%20Description.md)
  
 <br/><br/><br/>
