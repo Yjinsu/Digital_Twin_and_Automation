@@ -114,7 +114,7 @@ Project#2 - 우편 분류 공정(Using QR Code)에 사용한 Main Code Algorithm
    cv2.destroyAllWindows()
    ```
 
-   
+<br/><br/>   
 
 ## 2. qr_classify_robot.py [Main File]
 
