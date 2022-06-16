@@ -12,8 +12,8 @@
 
 <br/>
 
-1. QR 코드 생성
-   우편을 분류하기 위해, 먼저 QR 코드를 생성하는 과정이 필요합니다.
+1. QR 코드 생성 
+   우편을 분류하기 위해, 먼저 QR 코드를 생성하는 과정이 필요합니다. <br/>
    QR 코드 생성에는, Python Module "qrcode" 를 활용했습니다.
    
    <img src="https://user-images.githubusercontent.com/84503980/173837441-2640bf07-6d1a-4ec9-96ed-9da41ddb0509.png" width="100%" height="100%" align = 'center'/>
@@ -23,7 +23,7 @@
 <br/>
 
 2. 좌표 고정
-    편지 봉투를 쌓아 둘 곳과, 분류할 곳의 좌표를 설정해야 합니다.
+    편지 봉투를 쌓아 둘 곳과, 분류할 곳의 좌표를 설정해야 합니다. <br/>
     **INDY-10 전용 태블릿**을 활용, '직접 교시' 모드를 통해 좌표를 취득하였습니다.
     그 과정은 다음과 같습니다
     
@@ -41,15 +41,21 @@
       
     여기서 취득한 좌표를 사용하는 부분에 대해서는, 추후 **3. Coding** 부분에서 다시 언급하겠습니다.
 
+<br/>
+
+3. 외부 환경 세팅 예시
+      <p align="center">
+      <img src="https://user-images.githubusercontent.com/84503980/173986394-4e5b1244-670d-47d9-8831-004a5611a5cc.png" width="100%" height="100%" alt="text" width="number" />
+      </p>    
 <br/><br/><br/>
 
 ## 2. Internal Environment Setting
-
+<br/>
 1) **Install Visual Studio Code**
 
    - **Visual Studio Code** 란, 윈도우(Windows), 맥(Mac OS), 리눅스(Linux) 운영체제 모두에서 사용 가능한 소스 코드 편집기입니다.
    - 원활한 코드 수정/실행을 위해, VScode를 설치합니다.
-   - 다음의 주소를 통해 VScode를 설치할 수 있습니다. [Install Link](https://code.visualstudio.com/Download)
+   - 다음의 주소를 통해 VScode를 설치할 수 있습니다. [Install Link](https://code.visualstudio.com/Download)<br/><br/><br/>
 
 2) **Install Anaconda**
 
@@ -76,6 +82,7 @@
        ```python
             conda create -n py39 python = 3.9
        ```
+       <br/><br/>
 3) **Install Python module**
 
     - QR 코드를 인식하는 딥러닝 모델을 사용하기 위해서는 아래의 파이썬 모듈 설치가 요구됩니다.
@@ -105,8 +112,9 @@
             conda install pyzbar
             conda install numpy
        ```
+       <br/><br/>
 
-4) **Download IndyDCP Package & Demo Code **
+4) **Download IndyDCP Package & Demo Code**
 
     - 매니퓰레이터 모델 **INDY-10 (Neuromeka)** 을 구동시키기 위한 패키지와, Demo 수행을 위한 코드를 다운로드합니다.
     - [Download Link]()
