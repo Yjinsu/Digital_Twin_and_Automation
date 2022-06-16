@@ -90,7 +90,7 @@
 
 <br/>
 
-### 연결 - OnRobot Compute Box & 컨트롤 박스
+### 연결 - OnRobot Compute Box & IndyCB(컨트롤 박스)
 
 1. OnRobot Compute Box
    <p align="center">
@@ -109,31 +109,28 @@
 
   <p align="center">
   <img src="https://user-images.githubusercontent.com/84503980/174018890-f552edc4-0270-4ccf-9c63-de833f231b20.png" width="80%" height="80%" alt="text" width="number" />
+  <img src="https://user-images.githubusercontent.com/84503980/174027832-0ea4f497-39c7-4008-b599-9a4696a4ca56.png" width="80%" height="80%" alt="text" width="number" />
   </p>
-![image]()
 
-
-   [![img](https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/112.jpg)](https://github.com/chaochao77/ROS_neuromeka_tutorial/blob/main/image/112.jpg)[![img](https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/111.jpg)](https://github.com/chaochao77/ROS_neuromeka_tutorial/blob/main/image/111.jpg)
-
-   [![img](https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/114.jpg)](https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/114.jpg)
-
-   전선을 포트에 넣어 연결하려면은 **일자 드라이버 작은게 **필요합니다. 각 번호의 포트 **구멍 옆의 주황색 부분**을 일자 드라이버로 꾸욱 누르면 포트 구멍이 열려 쉽게 넣고 뺄 수 있습니다. **하지만 너무 깊게 넣을 시 빼기 힘들 수 있으니 잘 잡힐 정도로만 넣으면 됩니다.**
+   컨트롤 박스 포트에 대한 세부 설명은 [IndyCB](http://docs.neuromeka.com/2.3.0/kr/CB/section1/)에서 확인할 수 있습니다.
+   
+   전선을 포트에 넣어 연결하려면은 **작은 일자 드라이버**가 필요합니다. 각 번호의 포트 **구멍 옆의 주황색 부분**을 일자 드라이버로 꾸욱 누르면 포트 구멍이 열려 쉽게 넣고 뺄 수 있습니다. **하지만 너무 깊게 넣을 시 빼기 힘들 수 있으니 잘 잡힐 정도로만 넣으면 됩니다.**
 
 <br/>
 
-3. 컨트롤 박스의 I/O보드들에 전력을 공급하기 위해 위의 오른쪽 이미지 처럼 **1-10포트의 9,10번째를 서로 연결**하고, **11-20포트의 9,10번째를 서로 연결**합니다
+3. 컨트롤 박스의 I/O보드, 그리퍼 VGC10에 전력을 공급하기 위해 위의 아래의 이미지 처럼 포트를 연결합니다.
 
-   - 1-10 의 9,10번째 포트는 **GND**, 1-20의 9,10번째 포트는 **24[V] VCC**로 **컨트롤 박스 내부에서 자체적으로 I/O보드에 24[V]전력이 공급**되게 해줍니다.
-
-<br/>
-
-4. 이제 그리퍼 VGC10에 전력 공급을 위해 **41-50의 10번 포트에 Vcc(빨강, 파랑 패턴선), 9번에 GND(회색 갈색 패턴선)을 연결**합니다.
-
-<br/>
-
-5. 그리퍼의 **Close(파랑선)을 41-50의 2번 포트에, Open(빨강)을 1번에 연결**합니다. 아래의 이미지처럼 연결되었다면 그리퍼를 사용할 준비가 완료 된겁니다.
-
-   [![img](https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/113.jpg)](https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/113.jpg)
+  <p align="center">
+  <img src="https://user-images.githubusercontent.com/84503980/174030598-bc8b8d5f-a768-4424-a7c1-a27fcd88017a.png" width="80%" height="80%" alt="text" width="number" />
+  <img src="https://user-images.githubusercontent.com/84503980/174030632-a7acb567-e90a-4fa5-93a4-24fe7fe4c993.png" width="80%" height="80%" alt="text" width="number" />
+  </p>
+  
+   - **1-10포트의 9,10번째 포트(IndyCB)를 서로 연결**하고, **31-40포트와 41-50포트를 OnRobot Compute Box와 연결**합니다
+   - **31-40 의 9,10번째 포트(IndyCB)**는 OnRobot Compute Box의 **24V, GND**에 연결됩니다
+   - **41-50의 3,4번째 포트(IndyCB)**는 OnRobot Compute Box의 **DI1, DI2**에 연결됩니다
+   - 그리퍼의 **Close(파랑선)을 41-50의 2번 포트에, Open(빨강)을 1번에 연결**합니다
+   - 그리퍼 EGP-C-64을 사용하고 싶을 경우, **41-50의 10번 포트에 Vcc(빨강, 파랑 패턴선), 9번에 GND(회색 갈색 패턴선)을 추가로 연결**하면 됩니다.
+   
 
 <br/><br/>
 
@@ -145,16 +142,18 @@
 
 2. 로봇 설정에 들어가면 아래의 이미지 처럼 화면에 바로 6개의 조인트 및 **Smart DI/O** 들이 보입니다.
 
-   [![img](https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/141.jpg)](https://github.com/chaochao77/ROS_neuromeka_tutorial/raw/main/image/141.jpg)
+  <p align="center">
+  <img src="https://user-images.githubusercontent.com/84503980/174032054-e28a36da-9fa6-426d-92ec-daef6cbdf19d.png" width="80%" height="80%" alt="text" width="number" />
+  </p>
 
 <br/>
 
-3. Smart D I/O에서 **8 번과 9번**의 출력에 따라 그리퍼와 연결된 **Close(blue), Open(red) 선에 0,1의 디지털 값**이 입력됩니다.
+3. Smart D I/O에서 **10 번과 11번**의 출력에 따라 VGC10과 연결된 **Close(blue), Open(red) 선에 0,1의 디지털 값**이 입력됩니다. 그리퍼 EGP-C-64를 연결한 경우, Smart D I/O에서 **8 번과 9번**의 출력에 따라 그리퍼와 연결된 **Close(blue), Open(red) 선에 0,1의 디지털 값**이 입력됩니다.
 
 <br/>
 
-4. 태블릿에서 **8번을 눌러 On (초록색) , 9번을 off(회색)**을 하면 그리퍼 **열기**, 반대로 **8번을 다시 눌러 off, 9번을 눌러 on**하면 그리퍼 **닫기** 작용을 하게 됩니다.
+4. 태블릿에서 **10번을 눌러 On (초록색) , 11번을 off(회색)**을 하면 VGC10이 물체를 빨아들입니다.**, 반대로 **10번을 다시 눌러 off, 11번을 눌러 on**하면 VGC10의 흡입 동작이 정지합니다
 
 <br/>
 
-5. EGP-C-64의 경우 **Open과 Close가 { 1 ,0 } 또는 {0 , 1} 으로 입력**이 되어야 지만 열고 닫는 작용을 하게 됩니다.
+5. VGC10의 경우 **Open과 Close가 { 1 ,0 } 또는 {0 , 1} 으로 입력**이 되어야 지만 열고 닫는 작용을 하게 됩니다.
