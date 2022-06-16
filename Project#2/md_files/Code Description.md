@@ -2,6 +2,11 @@
 
 Project#2 - 우편 분류 공정(Using QR Code)에 사용한 Main Code Algorithm은 다음과 같다.
 
+<br/>
+<p align="center">
+      <img src="https://user-images.githubusercontent.com/84503980/173984351-4c86ff43-055b-493a-850d-456d8d736d36.png" width="100%" height="100%" alt="text" width="number" />
+      </p>
+
 <br/><br/>
 
 ## 1. qr_code_reader.py [Sub File]
