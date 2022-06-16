@@ -44,9 +44,9 @@
 <br/>
 
 3. 외부 환경 세팅 예시
-      <p align="center">
-      <img src="https://user-images.githubusercontent.com/84503980/173986394-4e5b1244-670d-47d9-8831-004a5611a5cc.png" width="100%" height="100%" alt="text" width="number" />
-      </p>    
+<p align="center">
+<img src="https://user-images.githubusercontent.com/84503980/174087900-2f56d494-6fb2-45db-821b-178ba5c21028.png" width="80%" height="80%" alt="text" width="number" />
+</p> 
 <br/><br/><br/>
 
 ## 2. Internal Environment Setting
@@ -125,9 +125,14 @@
 
 ## 3. Demo
 
-튜토리얼을 모두 수행하였을 경우, 다음과 같이 로봇이 동작합니다.
+<br/>
 
-1. [Demo Link]()
+튜토리얼을 모두 수행하였을 경우, 다음과 같이 로봇이 동작합니다.
+<br/>
+
+[Demo Link](https://youtu.be/Ejx63VOLV8c)
+
+
 
 
 
