@@ -37,11 +37,11 @@
 
 <br/><br/>
 
-## Hardware - Vaccum Gripper
+# Hardware - Vaccum Gripper
 
 <br/>
 
-### VGC10 (OnRobot)
+## VGC10 (OnRobot)
 
   <p align="center">
   <img src="https://user-images.githubusercontent.com/84503980/174002364-8460045f-b7f7-45d6-a4ee-385e9dd5e8f0.png" width="80%" height="80%" alt="text" width="number" />
@@ -49,7 +49,7 @@
 
 <br/>
 
-### Specification
+## Specification
 
 - 3개 종류의 Vacuum cup을 장착할 수 있습니다.
   <p align="center">
@@ -68,7 +68,7 @@
 
 <br/>
 
-### 연결 - Adapter Plate, 그리퍼
+## 연결 - Adapter Plate, 그리퍼
 
 아래의 이미지 예시처럼 Adapter Plate와 그리퍼를 연결할 수 있습니다.
 <p align="center">
@@ -83,7 +83,7 @@
 
 <br/>
 
-### 연결 - OnRobot Compute Box & IndyCB(컨트롤 박스)
+## 연결 - OnRobot Compute Box & IndyCB(컨트롤 박스)
 
 1. OnRobot Compute Box
    <p align="center">
@@ -127,7 +127,7 @@
 
 <br/><br/>
 
-### 제어 - 태블릿
+## 제어 - 태블릿
 
 1. Conty 앱을 실행하여 로봇과 연결합니다.
 
