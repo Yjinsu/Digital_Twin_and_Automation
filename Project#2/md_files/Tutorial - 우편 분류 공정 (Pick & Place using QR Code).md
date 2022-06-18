@@ -51,6 +51,7 @@
 
 ## 2. Internal Environment Setting
 <br/>
+
 1) **Install Visual Studio Code**
 
    - **Visual Studio Code** 란, 윈도우(Windows), 맥(Mac OS), 리눅스(Linux) 운영체제 모두에서 사용 가능한 소스 코드 편집기입니다.
