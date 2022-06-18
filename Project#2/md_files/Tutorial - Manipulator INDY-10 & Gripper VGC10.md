@@ -37,7 +37,7 @@
 
 <br/><br/>
 
-# Hardware - Vaccum Gripper
+# Tutorial - Vaccum Gripper
 
 <br/>
 
