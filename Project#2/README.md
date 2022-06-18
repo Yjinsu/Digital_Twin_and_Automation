@@ -33,9 +33,9 @@ Deep Learning 모델의 Input Data 취득을 위해 **WebCam**이 필요합니�
 
 ## Contents
 
-* ### Tutorial for Indy Hardware (Setting & Demo)
+* ### Tutorial for Indy Hardware & Gripper Setting
 
-  * [Reference Link](https://github.com/Yjinsu/Digital_Twin_and_Automation/blob/main/Project%232/md_files/Tutorial%20-%20Manipulator%20INDY-10.md)
+  * [Reference Link](https://github.com/Yjinsu/Digital_Twin_and_Automation/blob/main/Project%232/md_files/Tutorial%20-%20Manipulator%20INDY-10%20%26%20Gripper%20VGC10.md)
 
 
 
