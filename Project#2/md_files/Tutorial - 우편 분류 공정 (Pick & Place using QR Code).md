@@ -39,7 +39,7 @@
       <img src="https://user-images.githubusercontent.com/84503980/173838362-0cee0a60-e234-4209-8747-9bda393254cf.png" width="50%" height="50%" alt="text" width="number" />
       </p>
       
-    여기서 취득한 좌표를 사용하는 부분에 대해서는, 추후 **3. Coding** 부분에서 다시 언급하겠습니다.
+    여기서 취득한 좌표를 사용하는 방법은, **Code Description.md** 파일에 설명되어 있습니다.
 
 <br/>
 
